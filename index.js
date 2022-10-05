@@ -43,6 +43,7 @@ c2.setAttribute("id", "c2")
 const c3 = document.getElementsByTagName("td")[8]
 c3.setAttribute("id","c3")
 
+//test 2
 // test
 // //state
 // let state;
