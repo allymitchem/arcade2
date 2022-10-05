@@ -15,6 +15,25 @@ makeRow()
 
 const player1 = 'X'
 const player2 = 'O'
+//player name input boxes******//
+
+//player 1
+const player1Name = document.getElementById("player1")
+player1Name.addEventListener("click",playerName1)
+
+function playerName1 (){
+   let name1 = window.prompt ("Please enter Player 1's name.")
+player1Name.innerText = name1
+}
+//player 2
+const player2Name = document.getElementById("player2")
+player2Name.addEventListener("click", playerName2)
+
+function playerName2(){
+    let name2 = window.prompt("Please enter Player 2's name. ")
+    player2Name.innerText = name2
+}
+
 
 const a1 = document.getElementsByTagName("td")[0]
 a1.setAttribute("id", "a1")
@@ -43,6 +62,22 @@ c2.setAttribute("id", "c2")
 const c3 = document.getElementsByTagName("td")[8]
 c3.setAttribute("id","c3")
 
+const winCombos = [
+    [a1, b2, c3],
+    [c1, b2, a3],
+    [a1, a2, a3],
+    [b1, b2, b3],
+    [c1, c2, c3],
+    [a1, b1, c1],
+    [a2, b2, c2],
+    [a3, b3, c3]
+]
+const newGame = document.getElementById("newGame")
+newGame.addEventListener("click",start)
+
+function start(){
+
+}
 //test 2
 // test
 // //state
