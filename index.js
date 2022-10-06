@@ -63,7 +63,6 @@ c2.setAttribute("id", "c2");
 const c3 = document.getElementsByTagName("td")[8];
 c3.setAttribute("id", "c3");
 
-
 //winning combos
 const winCombos = [
   [a1, b2, c3],
@@ -114,40 +113,71 @@ board.addEventListener("click", oneVOne);
 // twoPlayerGame.addEventListener("click", oneVOne)
 
 function oneVOne(event) {
-  
+    
   if (event.target.innerText === "") {
     event.target.innerText = playerTurn;
     if (playerTurn === "X") {
-
       playerTurn = "O";
     } else {
       playerTurn = "X";
     }
   }
-
-  
+  checkForWin ()
 }
-//    function startGame
+ 
+function checkForWin() {
+  //check winCombos
+  // if ( //player's marks == winCombos.some?)
+  // checking to see if the o's or x's  winCombos[i]
+//   for (let i = 0; i < winCombos.length; i++) {
+    if (a1.innerText === "X" && b2.innerText === "X" && c3.innerText === "X" ||
+        c1.innerText === "X" && b2.innerText === "X" && a3.innerText=== "X" ||
+        a1.innerText === "X" && a2.innerText === "X" && a3.innerText === "X" ||
+        b1.innerText === "X" && b2.innerText === "X" && b3.innerText === "X" ||
+        c1.innerText === "X" && c2.innerText === "X" && c3.innerText === "X" ||
+        a1.innerText === "X" && b1.innerText === "X" && c1.innerText === "X" ||
+        a2.innerText === "X" && b2.innerText === "X" && c2.innerText === "X" ||
+        a3.innerText === "X" && b3.innerText === "X" && c3.innerText === "X" ){
+            //x's win
+           alert("X's win!")
+        console.log("x's win")
 
-//test 2
-// test
-// //state
-// let state;
+        } else if (a1.innerText === "O" && b2.innerText === "O" && c3.innerText === "O" ||
+        c1.innerText === "O" && b2.innerText === "O" && a3.innerText === "O" ||
+        a1.innerText === "O" && a2.innerText === "O" && a3.innerText === "O" ||
+        b1.innerText === "O" && b2.innerText === "O" && b3.innerText === "O" ||
+        c1.innerText === "O" && c2.innerText === "O" && c3.innerText === "O" ||
+        a1.innerText === "O" && b1.innerText === "O" && c1.innerText === "O" ||
+        a2.innerText === "O" && b2.innerText === "O" && c2.innerText === "O" ||
+        a3.innerText === "O" && b3.innerText === "O" && c3.innerText === "O" ){
+        
+            //o's win
+            alert("O's win!")
+            console.log("o's win")
+        }
+  
+    }
 
-// function buildInitialState(){
-
+//       player1.indexOf(winCombos[0]) > -1 &&
+//       player1.indexOf(winCombos[1]) > -1 &&
+//       player1.indexOf(winCombos[2]) > -1
+//     ) {
+//       //x's win..alert
+//       break;
+//     } else if (
+//       player2.indexOf(winCombos[0]) > -1 &&
+//       player2.indexOf(winCombos[1]) > -1 &&
+//       player2.indexOf(winCombos[2]) > -1
+//     ) {
+//       //o's win
+//       break;
+//     }
+//   }
 // }
 
-// //render
-// function renderState() {
+// computer moves
+// function randomComp (){
+//     //**needs to pick random empty cell for 'O' */
+//     let randomCell =
 
-// }
-
-//helper functions for interface
-
-// //listeners
-// function onBoardClick(){
-//     //update state with more helper functions
-
-//     renderState()//new state for user
 // }
