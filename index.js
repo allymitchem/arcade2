@@ -34,6 +34,8 @@ function playerName2(){
     player2Name.innerText = name2
 }
 
+// const cell = document.getElementsByTagName("td") **issue with add.. and effects single player?
+// cell.classList.add("cell")
 
 const a1 = document.getElementsByTagName("td")[0]
 a1.setAttribute("id", "a1")
@@ -61,7 +63,7 @@ c2.setAttribute("id", "c2")
 
 const c3 = document.getElementsByTagName("td")[8]
 c3.setAttribute("id","c3")
-
+//winning combos
 const winCombos = [
     [a1, b2, c3],
     [c1, b2, a3],
@@ -72,12 +74,57 @@ const winCombos = [
     [a2, b2, c2],
     [a3, b3, c3]
 ]
-const newGame = document.getElementById("newGame")
-newGame.addEventListener("click",start)
 
-function start(){
+
+//***resetting page to new game***/
+// const newGame = document.getElementById("newGame")
+// newGame.addEventListener("click",initial)
+
+// function initial(){
+//     board = [s
+//         [null, null, null],
+//         [null, null, null],
+//         [null, null, null]
+//     ]
+//     //reset the player names if necessary?
+
+// }
+// start()
+
+//*****clicking on 1 player */
+// event listener needed to set player 2's name to COMPUTER
+
+const singlePlayerGame = document.getElementById("onePlayer")
+singlePlayerGame.addEventListener("click", oneVComp)
+
+function oneVComp (){
+    let comp = "COMPUTER"
+    player2Name.innerText = comp
+    console.log(player2Name)
+}
+
+
+
+
+
+//clicking on 2 player//
+//pop up to input player names?
+
+const twoPlayerGame = document.getElementById("twoPlayers")
+twoPlayerGame.addEventListener("click", oneVOne)
+
+function oneVOne (){
+    alert ("Please enter player names.")
+
 
 }
+//    function startGame  
+
+    
+        
+
+
+
 //test 2
 // test
 // //state
