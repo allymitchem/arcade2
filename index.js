@@ -152,8 +152,13 @@ function checkForWin() {
             let oWin = player2Name.innerText +  " wins!"
            winMessage.innerText = oWin
         } 
-        
-        //   for draw... all cells are filled with no winCombo
+         else if (a1.innerText !== '' && a2.innerText!== '' && a3.innerText!== '' && 
+            b1.innerText!== '' && b2.innerText!== '' && b3.innerText!== '' && 
+            c1.innerText!== '' && c2.innerText!== '' && c3.innerText!== '' ){
+              winMessage.innerText = "DRAW!"
+            }
+
+        //   for draw... all cells are filled... no winCombo
         // }
   
     
@@ -181,6 +186,8 @@ const newGameButton = document.getElementById("newGame")
 newGameButton.addEventListener("click", function() {
   console.log("reset test")
 
+  //need to remove innerText from cells, reset names,remove mode,
+  //remove winning message, remove whose turn it is(?)
 
 })
 
