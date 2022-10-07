@@ -1,8 +1,9 @@
 const board = document.getElementsByTagName("table")[0];
 const player1 = "X";
 const player2 = "O";
-// const compPlayer
+const compPlayer = "O";
 let playerTurn = player1;
+let vsComputer = false
 
 
 function makeRow() {
@@ -79,10 +80,10 @@ const winCombos = [
 ];
 
 //needs to be in each function for 1vCOMP and 2v2
-const startingPlayer = Math.random() > 0.5 ? player1 : player2
-console.log(player1)//still only showing x or o not Player1
-const firstPlayer = document.getElementById("firstPlayer")
-firstPlayer.innerText = startingPlayer
+// const startingPlayer = Math.random() > 0.5 ? player1 : player2
+// console.log(player1)//still only showing x or o not Player1
+// const firstPlayer = document.getElementById("firstPlayer")
+// firstPlayer.innerText = startingPlayer
 
 
 
@@ -94,29 +95,38 @@ const singlePlayerGame = document.getElementById("onePlayer");
 singlePlayerGame.addEventListener("click", oneVComp);
 
 function oneVComp() {
-  let comp = "COMPUTER";
+  let comp = "COMPUTER"
   player2Name.innerText = comp;
+  //comp needs to find empty space, random. 
+  // need it's own function and then call function in oneVComp mode?
+  //if random spot is taken, loop again? if statement? if random cell = '', then place
+
+  
 }
 
-//clicking on 2 player//
-//pop up to input player names?
-// reset player names? >> default state
 
 
-
+// two player mode******
 board.addEventListener("click", oneVOne);
 
-const twoPlayerGame = document.getElementById("twoPlayers")
-twoPlayerGame.addEventListener("click", oneVOne)
+// const twoPlayerGame = document.getElementById("twoPlayers")
+// twoPlayerGame.addEventListener("click", oneVOne)
 
 function oneVOne(event) {
     
   if (event.target.innerText === "") {
     event.target.innerText = playerTurn;
-    if (playerTurn === "X") {
-      playerTurn = "O";
+    if (vsComputer === true){
+      //run computer move function
+      
     } else {
-      playerTurn = "X";
+
+      if (playerTurn === "X") {
+        playerTurn = "O";
+  
+      } else {
+        playerTurn = "X";
+      }
     }
   }
   checkForWin ()
@@ -137,6 +147,8 @@ function checkForWin() {
          
            let xWin = player1Name.innerText +  " wins!"
            winMessage.innerText = xWin
+          
+           
         
 
         } else if (a1.innerText === "O" && b2.innerText === "O" && c3.innerText === "O" ||
@@ -151,11 +163,13 @@ function checkForWin() {
            
             let oWin = player2Name.innerText +  " wins!"
            winMessage.innerText = oWin
+          
+
         } 
          else if (a1.innerText !== '' && a2.innerText!== '' && a3.innerText!== '' && 
             b1.innerText!== '' && b2.innerText!== '' && b3.innerText!== '' && 
             c1.innerText!== '' && c2.innerText!== '' && c3.innerText!== '' ){
-              winMessage.innerText = "DRAW!"
+              winMessage.innerText = "DRAW"
             }
 
         //   for draw... all cells are filled... no winCombo
@@ -184,10 +198,18 @@ function checkForWin() {
 
 const newGameButton = document.getElementById("newGame")
 newGameButton.addEventListener("click", function() {
-  console.log("reset test")
+ 
 
   //need to remove innerText from cells, reset names,remove mode,
   //remove winning message, remove whose turn it is(?)
+a1.innerText = '', a2.innerText = '', a3.innerText = ''
+b1.innerText = '', b2.innerText = '', b3.innerText = ''
+c1.innerText = '', c2.innerText = '', c3.innerText = ''
+
+winMessage.innerText = ''
+// player1Name.innerText = 'Player 1'
+// player2Name.innerText = 'Player 2'
+
 
 })
 
