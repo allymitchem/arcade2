@@ -4,6 +4,7 @@ const player2 = "O";
 // const compPlayer
 let playerTurn = player1;
 
+
 function makeRow() {
   const row = document.createElement("tr");
   for (let i = 0; i < 3; i++) {
@@ -36,6 +37,8 @@ function playerName2() {
   player2Name.innerText = name2;
 }
 
+const winMessage = document.getElementById("results")
+//********cell id's**********
 const a1 = document.getElementsByTagName("td")[0];
 a1.setAttribute("id", "a1");
 
@@ -75,23 +78,17 @@ const winCombos = [
   [a3, b3, c3],
 ];
 
-//***resetting page to new game***/
-// const newGame = document.getElementById("newGame")
-// newGame.addEventListener("click",initial)
+//needs to be in each function for 1vCOMP and 2v2
+const startingPlayer = Math.random() > 0.5 ? player1 : player2
+console.log(player1)//still only showing x or o not Player1
+const firstPlayer = document.getElementById("firstPlayer")
+firstPlayer.innerText = startingPlayer
 
-// function initial(){
-//     board = [s
-//         [null, null, null],
-//         [null, null, null],
-//         [null, null, null]
-//     ]
-//     //reset the player names if necessary?
 
-// }
-// start()
+
 
 //*****clicking on 1 player */
-// event listener needed to set player 2's name to COMPUTER
+//activates comp for O
 
 const singlePlayerGame = document.getElementById("onePlayer");
 singlePlayerGame.addEventListener("click", oneVComp);
@@ -103,14 +100,14 @@ function oneVComp() {
 
 //clicking on 2 player//
 //pop up to input player names?
-// reset player names?
+// reset player names? >> default state
 
-// const board = document.getElementsByTagName("td")
+
 
 board.addEventListener("click", oneVOne);
 
-// const twoPlayerGame = document.getElementById("twoPlayers")
-// twoPlayerGame.addEventListener("click", oneVOne)
+const twoPlayerGame = document.getElementById("twoPlayers")
+twoPlayerGame.addEventListener("click", oneVOne)
 
 function oneVOne(event) {
     
@@ -126,9 +123,8 @@ function oneVOne(event) {
 }
  
 function checkForWin() {
-  //check winCombos
-  // if ( //player's marks == winCombos.some?)
-  // checking to see if the o's or x's  winCombos[i]
+
+  
 //   for (let i = 0; i < winCombos.length; i++) {
     if (a1.innerText === "X" && b2.innerText === "X" && c3.innerText === "X" ||
         c1.innerText === "X" && b2.innerText === "X" && a3.innerText=== "X" ||
@@ -138,9 +134,10 @@ function checkForWin() {
         a1.innerText === "X" && b1.innerText === "X" && c1.innerText === "X" ||
         a2.innerText === "X" && b2.innerText === "X" && c2.innerText === "X" ||
         a3.innerText === "X" && b3.innerText === "X" && c3.innerText === "X" ){
-            //x's win
-           alert("X's win!")
-        console.log("x's win")
+         
+           let xWin = player1Name.innerText +  " wins!"
+           winMessage.innerText = xWin
+        
 
         } else if (a1.innerText === "O" && b2.innerText === "O" && c3.innerText === "O" ||
         c1.innerText === "O" && b2.innerText === "O" && a3.innerText === "O" ||
@@ -151,12 +148,16 @@ function checkForWin() {
         a2.innerText === "O" && b2.innerText === "O" && c2.innerText === "O" ||
         a3.innerText === "O" && b3.innerText === "O" && c3.innerText === "O" ){
         
-            //o's win
-            alert("O's win!")
-            console.log("o's win")
-        }
+           
+            let oWin = player2Name.innerText +  " wins!"
+           winMessage.innerText = oWin
+        } 
+        
+        //   for draw... all cells are filled with no winCombo
+        // }
   
-    }
+    
+}
 
 //       player1.indexOf(winCombos[0]) > -1 &&
 //       player1.indexOf(winCombos[1]) > -1 &&
@@ -174,6 +175,27 @@ function checkForWin() {
 //     }
 //   }
 // }
+//****** clicking new game button ******
+
+const newGameButton = document.getElementById("newGame")
+newGameButton.addEventListener("click", function() {
+  console.log("reset test")
+
+
+})
+
+
+   
+   
+    
+    
+
+
+
+
+
+
+
 
 // computer moves
 // function randomComp (){
