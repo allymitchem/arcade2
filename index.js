@@ -1,9 +1,31 @@
 const board = document.getElementsByTagName("table")[0];
+
 const player1 = "X";
 const player2 = "O";
 const compPlayer = "O";
 let playerTurn = player1;
-let vsComputer = false
+let vsComputer ;
+// let vsComputer = false
+const onePlayerGame = document.getElementById("onePlayer")
+onePlayerGame.addEventListener ("click", onePlayerToggle)
+function onePlayerToggle () {
+  vsComputer = true
+  let comp = "COMPUTER"
+  player2Name.innerText = comp;
+
+ 
+}
+
+const twoPlayerGame = document.getElementById("twoPlayers")
+twoPlayerGame.addEventListener("click", twoPlayerToggle)
+
+function twoPlayerToggle() {
+  vsComputer = false
+  player2Name.innerText = "PLAYER 2"
+}
+
+
+
 
 
 function makeRow() {
@@ -40,6 +62,8 @@ function playerName2() {
 
 const winMessage = document.getElementById("results")
 //********cell id's**********
+const tableCells = document.getElementsByTagName("td")
+
 const a1 = document.getElementsByTagName("td")[0];
 a1.setAttribute("id", "a1");
 
@@ -91,36 +115,35 @@ const winCombos = [
 //*****clicking on 1 player */
 //activates comp for O
 
-const singlePlayerGame = document.getElementById("onePlayer");
-singlePlayerGame.addEventListener("click", oneVComp);
+// const singlePlayerGame = document.getElementById("onePlayer");
+// singlePlayerGame.addEventListener("click", oneVComp);
 
-function oneVComp() {
-  let comp = "COMPUTER"
-  player2Name.innerText = comp;
+// 
   //comp needs to find empty space, random. 
   // need it's own function and then call function in oneVComp mode?
   //if random spot is taken, loop again? if statement? if random cell = '', then place
 
   
-}
+
 
 
 
 // two player mode******
-board.addEventListener("click", oneVOne);
+board.addEventListener("click", playerMoves);
 
-// const twoPlayerGame = document.getElementById("twoPlayers")
-// twoPlayerGame.addEventListener("click", oneVOne)
 
-function oneVOne(event) {
+
+function playerMoves(event) {
     
   if (event.target.innerText === "") {
     event.target.innerText = playerTurn;
     if (vsComputer === true){
       //run computer move function
+      computerMoves()
+      ///comment out if VSComputer and else to get O's to work
       
     } else {
-
+          
       if (playerTurn === "X") {
         playerTurn = "O";
   
@@ -129,9 +152,25 @@ function oneVOne(event) {
       }
     }
   }
+
   checkForWin ()
 }
  
+function computerMoves (){
+
+ let randomCells = Math.floor(Math.random() * (9-1) +1)
+//  console.log(randomCells)
+ tableCells[randomCells].innerText = "O"
+
+
+  } 
+  // computerMoves()
+
+  
+
+
+
+
 function checkForWin() {
 
   
