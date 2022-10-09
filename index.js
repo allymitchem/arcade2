@@ -155,17 +155,19 @@ function playerMoves(event) {
   }
 
   checkForWin ()
+  
 }
  
 function computerMoves (){
 
-// let randomCells = []****
+// let randomCells = []
 // do {
+ 
 //   randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
 //   tableCells[randomCells].innerText = "O"
 
 // }
-// while (tableCells[randomCells].innerText !== '')****
+// while (tableCells[randomCells].innerText !== '')
 
   // let randomCells = []
    let randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
@@ -219,7 +221,7 @@ function computerMoves (){
 function checkForWin() {
 
   
-//   for (let i = 0; i < winCombos.length; i++) {
+  
     if (a1.innerText === "X" && b2.innerText === "X" && c3.innerText === "X" ||
         c1.innerText === "X" && b2.innerText === "X" && a3.innerText=== "X" ||
         a1.innerText === "X" && a2.innerText === "X" && a3.innerText === "X" ||
@@ -257,7 +259,7 @@ function checkForWin() {
             }
 
        
-  
+          
     
 }
 
@@ -280,19 +282,18 @@ function checkForWin() {
 //****** clicking new game button ******
 
 const newGameButton = document.getElementById("newGame")
-newGameButton.addEventListener("click", function() {
+newGameButton.addEventListener("click", gameReset)
  
-
+function gameReset(){
 a1.innerText = '', a2.innerText = '', a3.innerText = ''
 b1.innerText = '', b2.innerText = '', b3.innerText = ''
 c1.innerText = '', c2.innerText = '', c3.innerText = ''
+playerTurn ="X"
 
 winMessage.innerText = ''
-// player1Name.innerText = 'Player 1'
-// player2Name.innerText = 'Player 2'
 
 
-})
+}
 
 
    
