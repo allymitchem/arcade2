@@ -5,6 +5,7 @@ const player2 = "O";
 // const compPlayer = [];
 let playerTurn = player1;
 let vsComputer ;
+
 // let vsComputer = false
 const onePlayerGame = document.getElementById("onePlayer")
 onePlayerGame.addEventListener ("click", onePlayerToggle)
@@ -91,7 +92,8 @@ c2.setAttribute("id", "c2");
 const c3 = document.getElementsByTagName("td")[8];
 c3.setAttribute("id", "c3");
 
-let boardCells = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2","c3"]
+let boardCells = [a1, a2, a3, b1, b2, b3, c1, c2,c3]
+
 //winning combos
 const winCombos = [
   [a1, b2, c3],
@@ -127,23 +129,26 @@ const winCombos = [
   
 
 
-
+  
 
 // two player mode******
 board.addEventListener("click", playerMoves);
-
+let moves = 0;
 
 
 function playerMoves(event) {
-    
+   moves++
+   
   if (event.target.innerText === "") {
     event.target.innerText = playerTurn;
+    
     if (vsComputer === true){
       //run computer move function
       computerMoves()
       ///comment out if VSComputer and else to get O's to work
       
     } else {
+      
           
  if (playerTurn === "X") {
         playerTurn = "O";
@@ -151,13 +156,24 @@ function playerMoves(event) {
       } else {
         playerTurn = "X";
       }
+      
     }
+    
   }
-
+  
+  console.log(moves)
+  // let emptySpots = (boardCells.filter(availableCells))
+  
+  
   checkForWin ()
   
 }
- 
+function availableCells (value){
+
+  return (value.innerText === "")
+  
+}
+
 function computerMoves (){
 
 // let randomCells = []
@@ -166,22 +182,30 @@ function computerMoves (){
 //   randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
 //   tableCells[randomCells].innerText = "O"
 
-// }
-// while (tableCells[randomCells].innerText !== '')
+// }  
 
-  // let randomCells = []
-   let randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
-  //  if (tableCells[randomCells] === ''){
-    if (playerTurn === "X") {
-      tableCells[randomCells].innerText = "O";
 
-    } else {
-      playerTurn = "X";
-    }
+  const emptySpots = boardCells.filter(availableCells)
+  console.log(emptySpots)
+  // console.log(emptySpots)
+   let randomCells = emptySpots[Math.floor(Math.random() * emptySpots.length)]
+   console.log(randomCells)
+    // if (playerTurn === "X") {
+      randomCells.innerText = "O";
+
+    // } else {
+    //   playerTurn = "X";
+    // }
   // tableCells[randomCells].innerText = "O"
   console.log(randomCells)
 } 
 
+
+// function availableCells (value){
+
+//   return (value.innerText === "")
+  
+// }
 // if (tableCells[randomCells].innerText === ""){
 // tableCells[randomCells].innerText = "O"
 // console.log(randomCells)
@@ -289,6 +313,7 @@ a1.innerText = '', a2.innerText = '', a3.innerText = ''
 b1.innerText = '', b2.innerText = '', b3.innerText = ''
 c1.innerText = '', c2.innerText = '', c3.innerText = ''
 playerTurn ="X"
+moves = 0;
 
 winMessage.innerText = ''
 

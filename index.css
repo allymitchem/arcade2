@@ -15,12 +15,14 @@ h1 {
 
 #playerNames {
   display: flex;
+  align-items:center;
   flex-direction: row;
   justify-content: space-around;
-  margin-left: 295px;
-  margin-right: 295px;
+  margin-left: 270px;
+  margin-right: 270px;
   font-size: 20px;
 }
+
 
 #player1 {
   background-color: rgba(34, 10, 49, 0.206);
@@ -45,6 +47,9 @@ h1 {
 }
 #vs {
   color: rgb(105, 32, 88);
+ font-size: 30px;
+  text-shadow: 0 0 2px rgba(242, 220, 210, 0.717),
+    0 0 5px rgba(242, 220, 210, 0.717), 0 0 8px rgb(242, 220, 210, 0.717);
   font-family: "Dosis", sans-serif;
   font-weight: bold;
 }
@@ -78,11 +83,11 @@ h1 {
 }
 
 table {
-  display: flex;
+  display: grid;
   flex-direction: column;
   justify-content: center;
-
-  margin-left: 460px;
+/* flex-grow:1; */
+  /* margin-left: 460px; */
 }
 td {
   color: rgb(89, 243, 189);
@@ -152,4 +157,21 @@ td {
   font-size: 60px;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width:831px){
+  td {
+    width:70px;
+    height:70px;
+    font-size: 20px;
+  }
+  #playerNames {
+    font-size:15px;
+    
+  }
+  #vs {
+    font-size:20px;
+    
+  }
+
 }
