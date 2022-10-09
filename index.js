@@ -2,7 +2,7 @@ const board = document.getElementsByTagName("table")[0];
 
 const player1 = "X";
 const player2 = "O";
-const compPlayer = "O";
+// const compPlayer = [];
 let playerTurn = player1;
 let vsComputer ;
 // let vsComputer = false
@@ -91,6 +91,7 @@ c2.setAttribute("id", "c2");
 const c3 = document.getElementsByTagName("td")[8];
 c3.setAttribute("id", "c3");
 
+let boardCells = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2","c3"]
 //winning combos
 const winCombos = [
   [a1, b2, c3],
@@ -144,7 +145,7 @@ function playerMoves(event) {
       
     } else {
           
-      if (playerTurn === "X") {
+ if (playerTurn === "X") {
         playerTurn = "O";
   
       } else {
@@ -158,12 +159,56 @@ function playerMoves(event) {
  
 function computerMoves (){
 
- let randomCells = Math.floor(Math.random() * (9-1) +1)
+// let randomCells = []****
+// do {
+//   randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
+//   tableCells[randomCells].innerText = "O"
+
+// }
+// while (tableCells[randomCells].innerText !== '')****
+
+  // let randomCells = []
+   let randomCells = boardCells[Math.floor(Math.random() * (9-1) +1)]
+  //  if (tableCells[randomCells] === ''){
+    if (playerTurn === "X") {
+      tableCells[randomCells].innerText = "O";
+
+    } else {
+      playerTurn = "X";
+    }
+  // tableCells[randomCells].innerText = "O"
+  console.log(randomCells)
+} 
+
+// if (tableCells[randomCells].innerText === ""){
+// tableCells[randomCells].innerText = "O"
+// console.log(randomCells)
+// }
+// } else {
+  
+// }
+// if (randomCells.innerText !== ""){
+//   boardCells.splice(boardCells.indexOf(randomCells),1)
+// }
+// for (let i = 0; i < tableCells.length; i++)
 //  console.log(randomCells)
- tableCells[randomCells].innerText = "O"
+// if (tableCells[randomCells].innerText!== ""){ ***********
+  
+// } else {
+
+//   tableCells[randomCells].innerText = "O"
+//  console.log(randomCells)
+// }******
+
+// 
+
+// }
 
 
-  } 
+
+
+
+  
   // computerMoves()
 
   
@@ -211,15 +256,14 @@ function checkForWin() {
               winMessage.innerText = "DRAW"
             }
 
-        //   for draw... all cells are filled... no winCombo
-        // }
+       
   
     
 }
 
-//       player1.indexOf(winCombos[0]) > -1 &&
-//       player1.indexOf(winCombos[1]) > -1 &&
-//       player1.indexOf(winCombos[2]) > -1
+//       player1.indexOf(winCombos[i][0].innerText) === "X" &&
+//       player1.indexOf(winCombos[i][1].innerText) === "X" &&
+//       player1.indexOf(winCombos[i][2].innerText) === "X"
 //     ) {
 //       //x's win..alert
 //       break;
@@ -239,8 +283,6 @@ const newGameButton = document.getElementById("newGame")
 newGameButton.addEventListener("click", function() {
  
 
-  //need to remove innerText from cells, reset names,remove mode,
-  //remove winning message, remove whose turn it is(?)
 a1.innerText = '', a2.innerText = '', a3.innerText = ''
 b1.innerText = '', b2.innerText = '', b3.innerText = ''
 c1.innerText = '', c2.innerText = '', c3.innerText = ''
